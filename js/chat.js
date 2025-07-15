@@ -62,33 +62,36 @@ if (recognition) {
     }
   });
 
-    recognition.onresult = (event) => {
-    let interim = '';
+  recognition.onresult = (event) => {
+  let interim = '';
 
-    for (let i = event.resultIndex; i < event.results.length; ++i) {
-        const result = event.results[i];
-        if (result.isFinal) {
+  for (let i = event.resultIndex; i < event.results.length; ++i) {
+    const result = event.results[i];
+    if (result.isFinal) {
+      // Only take the last result if it's different from the current fullTranscript
+      if (!fullTranscript.includes(result[0].transcript.trim())) {
         fullTranscript += result[0].transcript + ' ';
-        } else {
-        interim += result[0].transcript;
-        }
+      }
+    } else {
+      interim += result[0].transcript;
     }
+  }
 
-    chatInput.value = fullTranscript + interim;
+  chatInput.value = fullTranscript + interim;
 
-    clearTimeout(speechDelayTimeout);
-    // Submit 3 seconds after user stops
-    speechDelayTimeout = setTimeout(() => {
-        if (fullTranscript.trim()) {
-        recognition.stop();
-        isListening = false;
-        micIcon.classList.remove('listening');
-        showInputUI();
-        chatForm.requestSubmit();
-        fullTranscript = ''; // reset after sending
-        }
-    }, 1000);
-    };
+  clearTimeout(speechDelayTimeout);
+  speechDelayTimeout = setTimeout(() => {
+    if (fullTranscript.trim()) {
+      recognition.stop();
+      isListening = false;
+      micIcon.classList.remove('listening');
+      showInputUI();
+      chatForm.requestSubmit();
+      fullTranscript = ''; // ✅ reset here
+    }
+  }, 1000);
+};
+
 
 
 
@@ -185,6 +188,11 @@ function appendMessage(text, sender, timestamp) {
   wrapper.appendChild(timeEl);
   chatWindow.appendChild(wrapper);
   chatWindow.scrollTop = chatWindow.scrollHeight;
+
+  // ✅ Scroll to bottom *only after append*, and delayed to avoid push out on mobile
+  setTimeout(() => {
+    chatWindow.scrollTop = chatWindow.scrollHeight;
+  }, 100);
 }
 
 function formatTime(isoString) {
