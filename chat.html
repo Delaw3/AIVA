@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AIVANT Chat</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/chat.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="chat-wrapper">
+    <div class="chat-header bg-primary text-white p-3 d-flex justify-content-between align-items-center">
+      <h5 class="m-0">AIVANT Assistant</h5>
+      <button id="logoutBtn" class="btn btn-sm btn-light">Logout</button>
+    </div>
+
+    <div class="chat-body p-3" id="chatWindow">
+      <!-- Messages and dates will appear here -->
+    </div>
+
+    <div class="chat-footer p-3 bg-light">
+      <form id="chatForm" class="d-flex gap-2 align-items-center">
+        <input type="text" id="chatInput" class="form-control flex-grow-1" placeholder="Type or speak..." required />
+
+        <!-- Mic Button with SVG -->
+        <button type="button" id="micBtn" class="btn btn-outline-secondary" title="Speak">
+          <svg id="micIcon" xmlns="http://www.w3.org/2000/svg" class="icon mic-icon" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+            <path d="M12 1a3 3 0 00-3 3v7a3 3 0 006 0V4a3 3 0 00-3-3z"/>
+            <path d="M5 10a7 7 0 0014 0M12 17v4m-4 0h8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <!-- Send Button with SVG -->
+        <button type="submit" class="btn btn-primary" title="Send">
+          <svg class="icon send-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+          </svg>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/chat.js"></script>
+</body>
+</html>

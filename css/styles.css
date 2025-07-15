@@ -1,0 +1,28 @@
+body {
+  font-family: 'Inter', sans-serif;
+  background: #f8f9fa;
+  margin: 0;
+}
+
+.card {
+  border-radius: 14px;
+}
+
+button:focus {
+  outline: none;
+  box-shadow: none !important;
+}
+
+@media (max-width: 576px) {
+  .card {
+    padding: 2rem 1rem;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  p {
+    font-size: 0.95rem;
+  }
+}
