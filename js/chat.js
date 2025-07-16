@@ -10,6 +10,14 @@ const listeningPopup = document.getElementById('listeningPopup');
 const startSound = document.getElementById('startSound');
 const stopSound = document.getElementById('stopSound');
 
+
+
+
+let lastRenderedDate = '';
+let isListening = false;
+let speechDelayTimeout = null;
+let fullTranscript = '';
+
 onAuthStateChanged(auth, async (user) => {
   if (user) {
     // User is still signed in
@@ -27,13 +35,6 @@ const token = localStorage.getItem("firebaseToken");
 if (!token) {
   window.location.href = "login.html";
 }
-
-
-
-let lastRenderedDate = '';
-let isListening = false;
-let speechDelayTimeout = null;
-let fullTranscript = '';
 
 function showTypingIndicator() {
   const typingEl = document.createElement('div');
