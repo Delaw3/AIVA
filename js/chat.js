@@ -135,9 +135,7 @@ chatForm.addEventListener('submit', async (e) => {
 
   const timestamp = new Date().toISOString();
   appendMessage(message, 'user', timestamp);
-  chatInput.value = '';
-  fullTranscript = ''; // reset transcript after sending
-
+ 
   showTypingIndicator(); // 👈 Show loading indicator
 
   try {
@@ -156,6 +154,10 @@ chatForm.addEventListener('submit', async (e) => {
         timestamp
       })
     });
+
+     chatInput.value = '';
+     fullTranscript = ''; // reset transcript after sending
+
 
     const data = await res.json();
     const reply = data.reply || "Sorry! I can't respond right now.";
