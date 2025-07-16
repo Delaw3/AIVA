@@ -127,8 +127,9 @@ chatForm.addEventListener('submit', async (e) => {
 
   try {
     const token = localStorage.getItem('firebaseToken');
+    if (!token) window.location.href = "index.html"; 
 
-    const res = await fetch('https://your-n8n-domain.com/webhook/aiva-chat', {
+    const res = await fetch('https://aivant-n8n.onrender.com/webhook/aivant-chat', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
