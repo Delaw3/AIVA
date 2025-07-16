@@ -140,7 +140,7 @@ chatForm.addEventListener('submit', async (e) => {
     });
 
     const data = await res.json();
-    const reply = data.reply || 'No response from AIVANA.';
+    const reply = data.reply || "Sorry! I can't respond right now.";
     const replyTime = new Date().toISOString();
 
     removeTypingIndicator(); // 👈 Remove loading after response
