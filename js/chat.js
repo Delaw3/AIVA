@@ -152,8 +152,8 @@ chatForm.addEventListener('submit', async (e) => {
         'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify({ 
-        message : chatInput.value , 
-        timestamp: new Date().toISOString() 
+        message,
+        timestamp
       })
     });
 
