@@ -18,18 +18,18 @@ let isListening = false;
 let speechDelayTimeout = null;
 let fullTranscript = '';
 
-onAuthStateChanged(auth, async (user) => {
-  if (user) {
-    // User is still signed in
-    const token = await user.getIdToken();
-    localStorage.setItem("firebaseToken", token);
-    console.log("User session valid ", user.email);
-  } else {
-    // User is signed out
-    console.log("Not signed in ");
-    window.location.href = "index.html";
-  }
-});
+// onAuthStateChanged(auth, async (user) => {
+//   if (user) {
+//     // User is still signed in
+//     const token = await user.getIdToken();
+//     localStorage.setItem("firebaseToken", token);
+//     console.log("User session valid ", user.email);
+//   } else {
+//     // User is signed out
+//     console.log("Not signed in ");
+//     window.location.href = "index.html";
+//   }
+// });
 
 const token = localStorage.getItem("firebaseToken");
 if (!token) {
