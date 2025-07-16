@@ -151,7 +151,7 @@ chatForm.addEventListener('submit', async (e) => {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`
       },
-      body: JSON.stringify({ message, timestamp })
+      body: JSON.stringify({ message : chatInput.value , timestamp })
     });
 
     const data = await res.json();
