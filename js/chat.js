@@ -143,7 +143,7 @@ chatForm.addEventListener('submit', async (e) => {
     if (!token) window.location.href = "index.html"; 
     console.log("Firebase Token:", token);
 
-    const res = await fetch('https://aivant-n8n.onrender.com/webhook-test/aivant-chat' | 'https://aivant-n8n.onrender.com/webhook/aivant-chat', {
+    const res = await fetch( 'https://aivant-n8n.onrender.com/webhook/aivant-chat', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
